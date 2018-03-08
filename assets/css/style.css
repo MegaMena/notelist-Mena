@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex.full-height {
+  height: 100vh;
+}
+
+.flex.column {
+  flex-direction: column;
+}
+
+.flex.row {
+  flex-direction: row;
+}
+
+/*  flex:1 giver boxes muligheden for at fylde så meget som den kan. med to boxes som har flex: 1 og flex: 2, vil boxene
+fylde henholdsvis flex:1 = 1/3  flex: 2 = 2/3*/
+
+ul {
+  flex: 1;
+}
+
+button {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: Coral;
+}
