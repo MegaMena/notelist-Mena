@@ -35,4 +35,25 @@ function submitNote()
   setLocal(origNotes);
 }
 
-submitNote();
+function buildList()
+{
+  var noteList = getLocal();
+  var ulElm = document.querySelector("ul");
+
+  for(var i = 0; i < noteList.length; i++)
+  {
+    var liElm = document.createElement("li");
+    var pElm = document.createElement("p");
+
+    pElm.innerHTML = "Ladida";
+
+    liElm.appendChild(pElm);
+
+    ulElm.appendChild(liElm);
+  }
+}
+
+window.onload = function()
+{
+  buildList();
+}
