@@ -54,3 +54,18 @@ ul {
   transform: translate(-50%, -50%);
   padding: 10px;
 }
+
+#noteText {
+  border-width: 3px;
+  border-color: lightblue;
+}
+
+#noteTime {
+  border-width: 3px;
+  border-color: lightblue;
+}
+
+#noteImportant {
+  border-width: 3px;
+  border-color: lightblue;
+}

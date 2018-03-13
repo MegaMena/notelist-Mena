@@ -45,11 +45,32 @@ function buildList()
   for(var i = 0; i < noteList.length; i++)
   {
     var liElm = document.createElement("li");
-    var pElm = document.createElement("p");
+    var textPElm = document.createElement("p");
+    var datePElm = document.createElement("p");
     var delBtnElm = document.createElement("button");
     var editBtnElm = document.createElement("button");
 
-    pElm.innerHTML = noteList[i].text;
+
+    /*
+    var d = new Date(noteList[i].dueDate);
+    var outDate = d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear();
+    console.log(outDate);
+
+    datePElm.innerHTML = outDate;
+
+    if(password.length == 8) //Skal omskrives, så hvis der ikke skrives dato, at der ikke kommer en masse NaN
+      {
+          alert("Thank you very much!~");
+      }
+    else
+      {
+          alert("Hey! Plz retry!")
+      }
+
+    */
+
+    textPElm.innerHTML = noteList[i].text;
+    datePElm.innerHTML = noteList[i].dueDate;
 
     delBtnElm.innerHTML = "Delete";
     delBtnElm.setAttribute("data-index", i);
@@ -57,10 +78,12 @@ function buildList()
     delBtnElm.addEventListener("click", submitDelEvent);
 
     editBtnElm.innerHTML = "Edit";
-    editBtnElm.addEventListener("click", submitEditEvent);
     editBtnElm.setAttribute("data-index", i);
+    editBtnElm.addEventListener("click", submitEditEvent);
 
-    liElm.appendChild(pElm);
+
+    liElm.appendChild(textPElm);
+    liElm.appendChild(datePElm);
     liElm.appendChild(delBtnElm);
     liElm.appendChild(editBtnElm);
 
@@ -74,12 +97,17 @@ function submitEditEvent(event)
   var arrIndex = event.target.getAttribute("data-index");
   var notes = getLocal();
 
-  notes.push(arrIndex, 1);
+  var editText = prompt ("Edit text");
 
-  notes[i].text = document.querySelector("#noteText");
+  notes[arrIndex].text = editText;
+
+  var editDate = prompt ("Edit Date");
+
+  notes[arrIndex].dueDate = editDate;
 
   setLocal(notes);
   buildList();
+
 }
 
 function submitDelEvent(event)
@@ -125,4 +153,4 @@ showModalBtn.addEventListener('click', function(event)
 
 var submitNoteBtn = document.querySelector("#addNote");
 
-submitNoteBtn.addEventListener("click", submitNoteEvent)
+submitNoteBtn.addEventListener("click", submitNoteEvent);
